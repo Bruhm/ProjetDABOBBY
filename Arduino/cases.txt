@@ -1,0 +1,29 @@
+Case 1 : Electomagnet ON 
+Case 2 : Electromagnet OFF
+Case 3 : Robot avance
+Case 4 : Robot recule
+Case 5 : Robot tourne droite 90°
+Case 6 : Robot tourne gauche 90°
+Case 7 : Robot tourne 180°
+Case 8 : Robot stop
+Case 9 : Obstacle<10cm?
+Case 10 : Servo cam rotation 
+Case 11 : Servo cam stop
+
+
+Comportement jusqu'à canette :
+
+Case 10 / Case 2 jusqu'à detection canette
+Case 11 / Case 2
+Case 2/3/5/6 jusqu'à canette
+Si Case 9 : Case 2/4/5/6/7
+Si position robot = position canette : Case 1 / Case 8
+
+
+Comportement jusqu'à zone de depôt :
+
+Case 10 / Case 1 jusqu'à detection zone de depôt
+Case 11 / Case 1
+Case 1/3/5/6 jusqu'à zone de depôt
+Si Case 9 : Case 2/4/5/6/7
+Si position robot = zone de depôt : Case 2 / Case 8
