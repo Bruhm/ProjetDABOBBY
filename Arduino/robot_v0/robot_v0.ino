@@ -1,6 +1,7 @@
 #include "i2c.h"
 #include "pilotage.h"
 
+
 int pin_sharp = A0;  // fil jaune du capteur sharp branché a A0
 
 // the setup routine runs once when you press reset:

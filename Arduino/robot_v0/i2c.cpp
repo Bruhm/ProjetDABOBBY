@@ -1,4 +1,5 @@
 #include "i2c.h"
+#include "datacheck.h"
 
 int dataReceived = 0;
 int resolution = 100;
@@ -50,6 +51,7 @@ void receiveData(int byteCount){
 
 
 void dataCheck(){
-    Wire.write( function_id );
+    byte controlSum = CONTROL();
+    Wire.write( controlSum );
 }
 
