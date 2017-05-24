@@ -20,10 +20,10 @@ def sendFunctionToArduino( function_id, time ):
     # Replace 0 with 1 if a new Raspberry is used
     bus = smbus.SMBus(1)
     address = 0x12
-    print "Envoi de la fonction : " + Functions( function_id ).name
-    byteToSend = function_id << 4 + time
+    byteToSend = (function_id << 4) + time
     bus.write_byte(address, byteToSend)
 
-    time.sleep(time * 100) # TODO set a static polling rate
     reponse = bus.read_byte(address)
     print "Reponse : ", reponse
+
+sendFunctionToArduino( Functions.ALL_MOTORS_ON, 7);
