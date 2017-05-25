@@ -1,5 +1,25 @@
 #include "pilotage.h"
 
+void INIT_MAGNET() { 
+   
+   Servo1.attach(servoPin);
+   pinMode(Electromagnet, OUTPUT); 
+}
+
+void MAGNET_ON(){ 
+
+  digitalWrite(Electromagnet, HIGH);
+  delay(2000); 
+  Servo1.write(90);
+}
+
+void MAGNET_OFF(){ 
+
+  digitalWrite(Electromagnet, LOW);
+  delay(2000); 
+  Servo1.write(00);
+}
+
 void INIT_MOTORS_PINS()
 {
     pinMode(M11, OUTPUT);
