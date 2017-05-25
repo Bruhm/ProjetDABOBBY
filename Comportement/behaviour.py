@@ -1,13 +1,21 @@
 class Behaviour:
-    MAX_WIDTH = 320
-    MAX_HEIGHT = 240
+
+    MIN_SURFACE_TO_GRAB_OBJECT = 10000
 
     def __init__(self):
-        self.data = []
-
-    def avoidObstacle(self, obstacle):
-        if obstacle.posX > (Behaviour.MAX_WIDTH / 2):
+        pass
+        
+    def avoidObstacle(self, IDetectable):
+        if IDetectable.angle >= 0:
             return 'Dodge Droit'
         else:
             return 'Dodge Gauche'
+
+    def catchObject(self, IGrabable):
+        if IGrabable.isGrabable and IGrabable.surface >= Behaviour.MIN_SURFACE_TO_GRAB_OBJECT:
+            return 'Object grabed'
+        elif IGrabable.isGrabable and IGrabable.surface < Behaviour.MIN_SURFACE_TO_GRAB_OBJECT:
+            return 'Object is too far to be grabed' 
+        else:
+            return 'Object can\'t be grabed'
 
