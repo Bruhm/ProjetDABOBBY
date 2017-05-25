@@ -1,4 +1,6 @@
 import unittest
+
+from math import fabs
 from behaviour import Behaviour
 from obstacle import Obstacle
 from can import Can
@@ -12,7 +14,7 @@ class TestBehaviour(unittest.TestCase):
         self.assertEqual(element, 'Dodge Gauche')
     
     def test_dodgeRight(self):
-        element = self.behaviour.avoidObstacle( Obstacle(0, 20))
+        element = self.behaviour.avoidObstacle( Obstacle(0, 20) )
         self.assertEqual(element, 'Dodge Droit')
 
     def test_catchObject(self):
@@ -26,6 +28,12 @@ class TestBehaviour(unittest.TestCase):
     def test_uncatchableObject(self):
         element = self.behaviour.catchObject( Obstacle() )
         self.assertEqual(element, 'Object can\'t be grabed')
+
+    def test_goTowardsCan(self):
+        can = Can(420, 50)
+        self.behaviour.goTowardsCan( can )
+        self.behaviour.catchObject( can )
+        self.assertTrue( can, 'Object grabed')
 
 if __name__ == '__main__':
     unittest.main()
