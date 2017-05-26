@@ -13,10 +13,7 @@ from math import *
 from enum import Enum
 
 
-moveSleepDelay = 0.1
-moveSteps = 20
 
-canetteTrouvee = False
 
 mutexVideo = threading.Event()
 
@@ -29,17 +26,11 @@ resolutionY = 240
 camera = PiCamera()
 camera.resolution = (resolutionX, resolutionY)
 camera.framerate = 32
-camera.rotation = 90
 rawCapture = PiRGBArray(camera, size=camera.resolution )
 # allow the camera to warmup
 time.sleep(0.1)
 
 #init la position du carre a 0
-
-positions = ''
-font = cv2.FONT_HERSHEY_SIMPLEX
-center = []
-
 
 class Camera(Subject):
         def __init__(self, *args, **kwargs):
@@ -83,16 +74,7 @@ class Camera(Subject):
                         
                 # capture frames from the camera
                 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-                        image = frame.array
-                        #gauche = cv2.line(image, ((resolutionX /2)-40, resolutionY), ((resolutionX/2)-40, 0), (255,0,0), 2)
-                        #droite = cv2.line(image, ((resolutionX /2)+40, resolutionY), ((resolutionX/2)+40, 0), (255,255,0), 2)
-                        #hauteur = cv2.line(image, (0, (resolutionY /2)), ((resolutionX, resolutionY/2)), (0,255,0), 2)
-
-                        #face=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-                        #faces = face_cascade.detectMultiScale(face, 1.3, 5)
-                        
-                        
-                        
+                        image = frame.array                      
                         '''
                         ##########
                         # 1 - Cherche une cannette en fonction de la couleur
@@ -100,12 +82,12 @@ class Camera(Subject):
                         '''
                         blur = cv2.blur(image, (3,3))
                         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-
-                        threshw=cv2.inRange(hsv, lower_color, upper_color)
+                        
+                        
                         #threshw=cv2.inRange(hsv, lower_yellow, upper_yellow)
 
                         # find contours in the threshold image
-                        image, contours,hierarchy = cv2.findContours(threshw,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+                        #image, contours,hierarchy = cv2.findContours(threshw,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 
                         # finding contour with maximum area and store it as best_cnt
                         max_area = 0
@@ -134,20 +116,8 @@ class Camera(Subject):
                                 surface = w*h
                                 print Angle
                                 print surface
-                                cameraClass.send_message(Angle) 
-
-
-                                #if tw*th > 26000:
-                                        #pinAttraperRelacherCanette("attraper")
-                        
-                        
-
-
-
-                        # -- Montre l'image
-                        #cv2.imshow("face", image)
-                        #key = cv2.waitKey(1) & 0xFF
-                        #rawCapture.truncate(0)     
+                                cameraClass.send_message(Angle)
+                                cv2.circle(blur,(cx,cy),10,(0,0,255),-1) 
                         cv2.imshow("can", image)
                         cv2.imshow("frame", blur)
                         key = cv2.waitKey(1) & 0xFF
@@ -164,6 +134,13 @@ class Camera(Subject):
                                 print "[HALT] Video thread"
                                 break
                         #print "Video"
+
+        def ColorDetection(image,hsv,upper_color,lower_color):
+                threshw=cv2.inRange(hsv, lower_color, upper_color)
+                # find contours in the threshold image
+                image, contours,hierarchy = cv2.findContours(threshw,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+                
+                
 
 class EmailObserver(Observer):
     def notify(self, message):
