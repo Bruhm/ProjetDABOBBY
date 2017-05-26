@@ -32,6 +32,13 @@ void setup() {
     Serial.begin(9600);  // initialisation communication série
     analogReference(EXTERNAL); // tension analogique max sera 3,3 V
                              // si AREF est relié  3,3 V  
+
+
+     digitalWrite(M11, HIGH);
+      analogWrite(go2, 255);
+      delay(20000);
+    
+   
 }
 
 
@@ -78,22 +85,22 @@ void sendData(){
 
 // the loop routine runs over and over again forever:
 void loop() {
-  /* float distance = 32076.69016894*pow(valeur_moyenne(10), -1.245865753);
+  float distance = 32076.69016894*pow(valeur_moyenne(10), -1.245865753);
   Serial.println(distance);
 
-  all_motors_off();
+  ALL_MOTORS_ON();
   if (distance < 20) 
   {
-    all_motors_off();
+    ALL_MOTORS_OFF();
   }
   else if (distance > 20 && distance < 40)
   {
-    turn_left();
+    TURN_LEFT();
   }
   else
   {
-    all_motors_on();
-  } */
+    ALL_MOTORS_ON();
+  } 
   
 }
 
@@ -119,6 +126,7 @@ void TURN_LEFT()
   digitalWrite(M21, HIGH); 
   analogWrite(go, 255);
   analogWrite(go2, 255);
+
 }
 
 void TURN_RIGHT()
@@ -127,7 +135,7 @@ void TURN_RIGHT()
   digitalWrite(M11, HIGH);
   digitalWrite(M22, HIGH); 
   analogWrite(go, 255);
-  analogWrite(go, 255);
+  analogWrite(go2, 255);
 }
 
 void SET_MOTORS_FORWARDS()
