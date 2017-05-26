@@ -12,9 +12,18 @@ void setup() {
     Serial.begin(9600);  // initialisation communication série
     analogReference(EXTERNAL); // tension analogique max sera 3,3 V
                              // si AREF est relié  3,3 V  
+
+
+     digitalWrite(M11, HIGH);
+      analogWrite(go2, 255);
+      delay(20000);
+    
+   
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
+
   
 }
+
