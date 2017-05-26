@@ -10,14 +10,14 @@ void MAGNET_ON(){
 
   digitalWrite(Electromagnet, HIGH);
   delay(2000); 
-  Servo1.write(90);
+  Servo1.write(0);
 }
 
 void MAGNET_OFF(){ 
 
   digitalWrite(Electromagnet, LOW);
   delay(2000); 
-  Servo1.write(00);
+  Servo1.write(90);
 }
 
 void INIT_MOTORS_PINS()
