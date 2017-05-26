@@ -4,9 +4,7 @@
 # Angle will be a negative value if the object is on the left of the bot, positive otherwise.
 
 class IDetectable:
-    def __init__(self, surface = 0, angle = 0):
+    def __init__(self, surface=0, angle=0):
         self.surface = surface
         self.angle = angle
         self.isGrabable = False
-
-

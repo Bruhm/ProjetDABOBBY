@@ -1,17 +1,15 @@
-####################################################################
-# This is a stubbed bot implementing the IBehaviour interface      #
-# Its only purpose is for code testing in a simulated environment  #
-# where the bot knows its position and angle and has knowledge of  #
-# every can position                                               #
-####################################################################
+""" This is a stubbed bot implementing the IBehaviour interface
+Its only purpose is for code testing in a simulated environment
+where the bot knows its position and angle and has knowledge of
+every can position """
 
-from IBehaviour import IBehaviour
 from random import randint
 from time import sleep
-
 import math
 
-class CodeBot: 
+from IBehaviour import IBehaviour
+
+class CodeBot:
 
     MIN_SURFACE_TO_GRAB_OBJECT = 10000
     ANGLE_TOLERANCE = 5
@@ -57,10 +55,10 @@ class CodeBot:
         if IGrabable.isGrabable and IGrabable.surface >= self.MIN_SURFACE_TO_GRAB_OBJECT:
             return 'Object grabed'
         elif IGrabable.isGrabable and IGrabable.surface < self.MIN_SURFACE_TO_GRAB_OBJECT:
-            return 'Object is too far to be grabed' 
+            return 'Object is too far to be grabed'
         else:
             return 'Object can\'t be grabed'
-    
+
     def goTowardsCan(self, Can):
        while Can.surface < self.MIN_SURFACE_TO_GRAB_OBJECT:
             Can.surface += 1000 # Go towards the can
@@ -89,7 +87,7 @@ class CodeBot:
     # This function is a stub of the camera detection by the robot which is
     # supposed to return the surface of a detected cam.
     #
-    # Instead of a surface threshold to activate movement, we will in this case 
+    # Instead of a surface threshold to activate movement, we will in this case
     # use the angle and distance values of the bot
     def findClosestCan(self):
         for can in self.cansInEnvironement:
