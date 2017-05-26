@@ -1,17 +1,14 @@
-from math import *
+from codebot import CodeBot
+from can import Can
+from random import randint
 
-class Canette:
-    def __init__(self, url):
-        self.posX = 250
-        self.posY = 250
+bot = CodeBot()
+cans = []
+for i in range(10):
+    cans.append( Can(randint(400,1000) , randint(0,360)) )
 
+bot.cansInEnvironement = cans
 
-class Deplacement:
-    def __init__(self,):
-        self.countDetection = 0
-        self.ListPos =[]
-
-def angle(x,y):
-    return degrees(atan2(x,y))
+bot.start()
     
         

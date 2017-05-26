@@ -1,13 +1,13 @@
 import unittest
 
 from math import fabs
-from behaviour import Behaviour
+from codebot import CodeBot
 from obstacle import Obstacle
 from can import Can
 
-class TestBehaviour(unittest.TestCase):
+class TestCodeBotBehaviour(unittest.TestCase):
     def setUp(self):
-        self.behaviour = Behaviour()
+        self.behaviour = CodeBot()
 
     def test_dodgeLeft(self):
         element = self.behaviour.avoidObstacle( Obstacle(0, -50) )
