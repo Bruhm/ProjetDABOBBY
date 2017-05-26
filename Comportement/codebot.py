@@ -23,7 +23,7 @@ class CodeBot:
         self.posX = 0
         self.posY = 0
         self.angle = 0
-    
+
     # For now, bot starts by idling and looking for cans
     def start(self):
         while True:
@@ -40,7 +40,7 @@ class CodeBot:
             print(self.catchObject(self.lockedCan))
             sleep(1.5)
             print('Bot is back to idling\n')
-            self.lockedCan.angle = randint(0,359) # Resetting locked can position
+            self.lockedCan.angle = randint(0, 359) # Resetting locked can position
             self.lockedCan = None
             self.foundCan = False
             sleep(1.5)
@@ -60,7 +60,7 @@ class CodeBot:
             return 'Object can\'t be grabed'
 
     def goTowardsCan(self, Can):
-       while Can.surface < self.MIN_SURFACE_TO_GRAB_OBJECT:
+        while Can.surface < self.MIN_SURFACE_TO_GRAB_OBJECT:
             Can.surface += 1000 # Go towards the can
 
     def idleLookForCan(self):
@@ -80,7 +80,7 @@ class CodeBot:
                 turnedDegrees += self.TURNING_ANGLE_STEP
         if turnedDegrees >= 360:
             print("Bot did a full turn without finding a can")
-    
+
     def turnRight(self, angle):
         self.angle = (self.angle + angle) % 360
 
@@ -94,8 +94,6 @@ class CodeBot:
             if math.fabs(can.angle - self.angle) < self.ANGLE_TOLERANCE and can.surface > self.SURFACE_FOR_MINIMAL_CAN_DETECTION:
                 self.lockedCan = can
                 self.foundCan = True
-                print('Locked can with values - angle : ' + str(can.angle) + ' surface : ' +  str(can.surface) )
+                print('Locked can with values - angle : ' + str(can.angle) + ' surface : ' +  str(can.surface))
             else:
-                can.surface = randint(400,1000) # randomize a new surface value for test purposes
-
-
+                can.surface = randint(400, 1000) # randomize a new surface value for test purposes
