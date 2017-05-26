@@ -41,6 +41,12 @@ void receiveData(int byteCount){
           case 7:
             UNSET_MOTORS();
           break;
+          case 8:
+            MAGNET_OFF();
+          break;
+          case 9:
+            MAGNET_ON();
+          break;
           default:
             Serial.print("Function out of range");
           break;

@@ -18,8 +18,6 @@ moveSteps = 20
 
 canetteTrouvee = False
 
-mutexVideo = threading.Event()
-
 #Resolution camera
 resolutionX = 320
 resolutionY = 240
@@ -56,7 +54,7 @@ class Camera(Subject):
                     observer.notify(message)
 
         def send_message(self, message):
-                print 'notification subject'
+                print('notification subject')
                 self.notify_all(message)
         
         x = 0
@@ -132,8 +130,8 @@ class Camera(Subject):
                                 cv2.rectangle(blur,(x,y),(x+w,y+h),(0,255,255),2)
                                 Angle = self.angle((x+w/2),(y+h/2))
                                 surface = w*h
-                                print Angle
-                                print surface
+                                print(Angle)
+                                print(surface)
                                 cameraClass.send_message(Angle) 
 
 
@@ -161,37 +159,29 @@ class Camera(Subject):
     
                 while True:
                         if mutexVideo.wait(1):
-                                print "[HALT] Video thread"
+                                print("[HALT] Video thread")
                                 break
                         #print "Video"
 
-class EmailObserver(Observer):
+class CameraObserver(Observer):
     def notify(self, message):
-        print message
+        print(message)
     
 # Interrupt Signal
 halt = False
 def stopAll(signum, frame):
-    print "Interrupt!!"
+    print("Interrupt!!")
     global halt
     halt = True
     mutexVideo.set()
 signal.signal(signal.SIGINT, stopAll)
-
-
-# mutexVideo.set() # Stop le threadScanVideo
-# stopAll() # Stop all threads
-cameraClass = Camera()
-email_observer = EmailObserver()
-cameraClass.register(email_observer)
-tScan = threading.Thread(target=cameraClass.threadScanVideo, args=([mutexVideo]))
 
 try:
     tScan.start()
 
     while not halt:
         continue
-    print "[HALT] Main thread"
+    print("[HALT] Main thread")
 
 except Exception as ex:
-        print ex
+        print(ex)
