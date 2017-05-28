@@ -3,6 +3,7 @@
 from random import randint
 from codebot import CodeBot
 from can import Can
+from IGrabable import IGrabable
 
 def main():
     bot = CodeBot()

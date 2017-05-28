@@ -1,7 +1,7 @@
 import threading
 
 from IBehaviour import IBehaviour
-from Detection.camera import Camera, CameraObserver
+from Detection.camera import Camera, RedObserver
 from RaspberryICC.ICCConnexion import ICCArduino, Functions
 
 class CanBot:
@@ -11,7 +11,7 @@ class CanBot:
 
     def __init__(self):
         self.camera = Camera()
-        self.cameraObserver = CameraObserver()
+        self.redObserver = RedObserver()
         self.iccBus = ICCArduino()
         self.lockedCan = None
         self.hasCan = False
@@ -19,7 +19,7 @@ class CanBot:
         
     def start(self):
         ## Initiating Camera ##
-        self.camera.register(self.cameraObserver)
+        self.camera.register(self.redObserver)
         threadCamera = threading.Thread(target=self.camera.threadScanVideo, args=([self.MUTEX_VIDEO]))
 
     def avoidObstacle(self, IDetectable):
