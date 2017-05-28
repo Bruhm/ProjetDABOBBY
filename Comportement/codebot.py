@@ -6,7 +6,7 @@ every can position """
 from random import randint
 from time import sleep
 import math
-
+from IGrabable import IGrabable
 from IBehaviour import IBehaviour
 
 class CodeBot:
@@ -46,15 +46,15 @@ class CodeBot:
             sleep(1.5)
 
     def avoidObstacle(self, IDetectable):
-        if IDetectable.angle >= 0:
+        if iDetectable.angle >= 0:
             return 'Dodge Droit'
         else:
             return 'Dodge Gauche'
 
-    def catchObject(self, IGrabable):
-        if IGrabable.isGrabable and IGrabable.surface >= self.MIN_SURFACE_TO_GRAB_OBJECT:
+    def catchObject(self, can):
+        if can.IGrabable.isGrabable() and can.surface >= self.MIN_SURFACE_TO_GRAB_OBJECT:
             return 'Object grabed'
-        elif IGrabable.isGrabable and IGrabable.surface < self.MIN_SURFACE_TO_GRAB_OBJECT:
+        elif can.IGrabable.isGrabable() and can.surface < self.MIN_SURFACE_TO_GRAB_OBJECT:
             return 'Object is too far to be grabed'
         else:
             return 'Object can\'t be grabed'
