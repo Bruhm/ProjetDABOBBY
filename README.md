@@ -16,11 +16,18 @@ Notre projet a abouti à "DaBobby", un automate motorisé équipé d'un bras aim
 * Le robot doit déposer les canettes ramassés dans une zone précise dite de "dépot"
 
 ## Diagrammes UML ![logo](/Files/Images/Icones/trombone.png)
-* [Diagramme Composants logiciel](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/ComposantLogiciel.mdj)
-* [Diagramme d'activité](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/Activite.mdj)
-* [Diagramme d'état transition](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/Etat.mdj)
-* [Diagramme composants logiciel ](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/ComposantLogiciel.mdj)
-* [Diagramme déploiement physique ](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/DeploiementPhysique.mdj)
+* [Diagrammes ici](https://github.com/Bruhm/ProjetDABOBBY/tree/master/Files/Images)
+#### Diagramme d'activité:
+![Activité](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/PNGDiagrammes/Activite.png)
+#### Diagramme d'état:
+![Activité](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/PNGDiagrammes/Etat.png)
+#### Diagramme déploiement physique:
+![Activité](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/PNGDiagrammes/Deploiement%20physique.png)
+#### Diagramme composants logiciel:
+![Activité](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/PNGDiagrammes/Composants%20Logiciels.png)
+
+
+
 
 ## Schéma électronique ![logo](/Files/Images/Icones/chip.png)
 
