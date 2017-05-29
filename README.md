@@ -16,7 +16,7 @@ Notre projet a abouti à "DaBobby", un automate motorisé équipé d'un bras aim
 * Le robot doit déposer les canettes ramassés dans une zone précise dite de "dépot"
 
 ## Diagrammes UML ![logo](/Files/Images/Icones/trombone.png)
-* [Diagrammes ici](https://github.com/Bruhm/ProjetDABOBBY/tree/master/Files/Images)
+* [Diagrammes ici](https://github.com/Bruhm/ProjetDABOBBY/tree/master/Files/Documents/Modélisations)
 #### Diagramme d'activité:
 ![Activité](https://github.com/Bruhm/ProjetDABOBBY/blob/master/Files/Images/PNGDiagrammes/Activite.png)
 #### Diagramme d'état:
