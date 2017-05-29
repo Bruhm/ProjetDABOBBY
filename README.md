@@ -1,6 +1,7 @@
 # DaBobby: *Ramasseur de canettes*
 ## Présentation ![logo](/Files/Images/Icones/bulle.png)
-Dans le cadre de leurs études en informatique, les étudiants de l'Exia Cesi de Toulouse ont dû réaliser un robot ramasseur de canettes. Ce projet réponds à un appel d'offre.
+Dans le cadre de leurs études en informatique, les étudiants de l'Exia Cesi de Toulouse ont dû réaliser un robot ramasseur de canettes. Ce projet réponds à un appel d'offre: nous devons concevoir un automate qui ramasse des cylindres métalliques (canettes) dans des espaces fréquentés par des « jeunes » en milieu urbain.
+
 Notre projet a abouti à "DaBobby", un automate motorisé équipé d'un bras aimanté.
 
 ## Modélisation 3D ![logo](/Files/Images/Icones/cube.png)
