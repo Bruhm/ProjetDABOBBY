@@ -48,12 +48,12 @@ class CanBot:
 
     def catchObject(self):
         self.iccBus.sendFunctionToArduino(Functions.MAGNET_ON , 0)
-        time.sleep(1)
+        time.sleep(0.5)
         self.iccBus.sendFunctionToArduino(Functions.SERVO_ON , 0)
 
     def releaseObject(self):
         self.iccBus.sendFunctionToArduino(Functions.MAGNET_OFF , 0)
-        time.sleep(1)
+        time.sleep(0.5)
         self.iccBus.sendFunctionToArduino(Functions.SERVO_OFF , 0)
         
     def canCatchObject(self, IGrabable):
@@ -124,7 +124,9 @@ class CanBot:
                 print "recherche"
                 self.iccBus.sendFunctionToArduino(Functions.ALL_MOTORS_ON , 0)
                 self.iccBus.sendFunctionToArduino(Functions.TURN_RIGHT , 0)
-                time.sleep(1)
+                time.sleep(0.2)
+                self.iccBus.sendFunctionToArduino(Functions.SET_MOTORS_FORWARDS , 0)
+                time.sleep(0.2)
                 self.iccBus.sendFunctionToArduino(Functions.ALL_MOTORS_OFF , 0)
                 count = 0
             self.CheackObject()
