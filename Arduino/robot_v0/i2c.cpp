@@ -15,9 +15,10 @@ void INIT_I2C() {
 void receiveData(int byteCount){
     while(Wire.available()) {
         dataReceived = Wire.read();
-
         uptime = (dataReceived & 0xF);
         function_id = ((dataReceived >> 4) & 0xF);
+        if (ObstacleFound == false){
+           Serial.println("rentre");
         switch (function_id)
         {
           case 1:
@@ -47,9 +48,20 @@ void receiveData(int byteCount){
           case 9:
             MAGNET_ON();
           break;
+          case 10:
+            SERVO_OFF();
+          break;
+          case 11:
+            SERVO_ON();
+          break;
+          case 12:
+            INITIALISATION();
+          break;
+          
           default:
             Serial.print("Function out of range");
           break;
+        }
         }
     }
 }
