@@ -4,20 +4,42 @@ void INIT_MAGNET() {
    
    Servo1.attach(servoPin);
    pinMode(Electromagnet, OUTPUT); 
+   digitalWrite(Electromagnet, LOW);
+   Servo1.write(0);
 }
 
 void MAGNET_ON(){ 
 
   digitalWrite(Electromagnet, HIGH);
-  delay(2000); 
-  Servo1.write(0);
 }
 
 void MAGNET_OFF(){ 
 
   digitalWrite(Electromagnet, LOW);
-  delay(2000); 
+}
+
+float valeur_moyenne(float taille) {
+  int total = 0;
+  for (int i=0; i<taille; i++) {
+    float lecture = analogRead(pin_sharp); 
+    total = total + lecture;
+    delay(10);
+  }
+  return(total/taille);
+}
+void SERVO_ON(){ 
+
   Servo1.write(90);
+}
+
+void SERVO_OFF(){ 
+
+  Servo1.write(0);
+}
+
+void INITIALISATION(){
+    INIT_MAGNET();
+    INIT_MOTORS_PINS();
 }
 
 void INIT_MOTORS_PINS()
@@ -47,8 +69,6 @@ void TURN_LEFT()
   UNSET_MOTORS();
   digitalWrite(M12, HIGH);
   digitalWrite(M21, HIGH); 
-  analogWrite(go, 255);
-  analogWrite(go2, 255);
 }
 
 void TURN_RIGHT()
@@ -56,18 +76,18 @@ void TURN_RIGHT()
   UNSET_MOTORS();
   digitalWrite(M11, HIGH);
   digitalWrite(M22, HIGH); 
-  analogWrite(go, 255);
-  analogWrite(go, 255);
 }
 
 void SET_MOTORS_FORWARDS()
 {
+  UNSET_MOTORS();
   digitalWrite(M11, HIGH);  
   digitalWrite(M21, HIGH); 
 }
 
 void SET_MOTORS_BACKWARDS()
 {
+  UNSET_MOTORS();
   digitalWrite(M12, HIGH); 
   digitalWrite(M22, HIGH); 
 }
